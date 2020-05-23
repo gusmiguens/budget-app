@@ -1,9 +1,9 @@
-const React = require('react')
-const { connect } = require('react-redux')
-const ExpenseListItem = require('./ExpenseListItem')
-const selectExpenses = require('../selectors/expenses')
+import React from 'react'
+import { connect } from 'react-redux'
+import ExpenseListItem from './ExpenseListItem'
+import selectExpenses from '../selectors/expenses'
 
-const ExpenseList = (props) => (
+export const ExpenseList = (props) => (
     <div>
         {
             props.expenses.length === 0 ? (
@@ -23,9 +23,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const ConnectedExpenseList = connect(mapStateToProps)(ExpenseList)
-
-module.exports = {
-    ConnectedExpenseList,
-    ExpenseList
-}
+export default connect(mapStateToProps)(ExpenseList)

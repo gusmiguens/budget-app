@@ -1,17 +1,15 @@
-const { createStore, combineReducers } = require('redux')
-const expensesReducer = require('../reducers/expenses')
-const filtersReducer = require('../reducers/filters')
+import { createStore, combineReducers } from 'redux'
+import expensesReducer from '../reducers/expenses'
+import filtersReducer from '../reducers/filters'
 
-
-const store = createStore(
-    combineReducers({
-        expenses: expensesReducer,
-        filters: filtersReducer
-    }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
-
-module.exports = store
-
-
-
+export default () => {
+    const store = createStore(
+        combineReducers({
+            expenses: expensesReducer,
+            filters: filtersReducer
+        }),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
+    console.log(store)
+    return store
+}

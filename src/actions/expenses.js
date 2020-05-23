@@ -1,6 +1,6 @@
-const { v4: uuidv4 } = require('uuid')
+import { v4 as uuidv4 } from 'uuid'
 
-const addExpense = (
+export const addExpense = (
     {
         description = '',
         note = '',
@@ -18,19 +18,13 @@ const addExpense = (
     }
 })
 
-const removeExpense = ({ id } = {}) => ({
+export const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id
 })
 
-const editExpense = (id, updates) => ({
+export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
     id,
     updates
 })
-
-module.exports = {
-    addExpense,
-    removeExpense,
-    editExpense
-}

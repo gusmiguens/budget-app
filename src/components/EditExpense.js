@@ -1,9 +1,9 @@
-const React = require('react')
-const { connect } = require('react-redux')
-const { editExpense, removeExpense } = require('../actions/expenses')
-const ExpenseForm = require('./ExpenseForm')
+import React from 'react'
+import { connect } from 'react-redux'
+import { editExpense, removeExpense } from '../actions/expenses'
+import ExpenseForm from './ExpenseForm'
 
-class EditExpense extends React.Component {
+export class EditExpense extends React.Component {
     onSubmit = (expense) => {
         this.props.editExpense(this.props.expense.id, expense);
         this.props.history.push('/')
@@ -37,9 +37,4 @@ const mapDispatchToProps = (dispatch, props) => ({
     removeExpense: (data) => dispatch(removeExpense(data))
 })
 
-const connectedEditExpense = connect(mapStateToProps, mapDispatchToProps)(EditExpense)
-
-module.exports = {
-    connectedEditExpense,
-    EditExpense
-}
+export default connect(mapStateToProps, mapDispatchToProps)(EditExpense)

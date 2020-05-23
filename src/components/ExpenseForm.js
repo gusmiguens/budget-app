@@ -1,9 +1,9 @@
-const React = require('react')
-const moment = require('moment')
-const { SingleDatePicker } = require('react-dates')
-require('react-dates/initialize')
+import React from 'react'
+import moment from 'moment'
+import { SingleDatePicker } from 'react-dates'
+import('react-dates/initialize')
 
-class ExpenseForm extends React.Component {
+export default class ExpenseForm extends React.Component {
     constructor(props) {
         super(props)
 
@@ -90,5 +90,3 @@ class ExpenseForm extends React.Component {
         )
     }
 }
-
-module.exports = ExpenseForm

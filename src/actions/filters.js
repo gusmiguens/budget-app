@@ -1,32 +1,24 @@
-const setTextFilter = (text = '') => ({
+export const setTextFilter = (text = '') => ({
     type: 'SET_TEXT_FILTER',
     text
 })
 
-const sortByAmount = () => ({
+export const sortByAmount = () => ({
     type: 'SORT_BY_AMOUNT',
     sortBy: 'amount'
 })
 
-const sortByDate = () => ({
+export const sortByDate = () => ({
     type: 'SORT_BY_DATE',
     sortBy: 'date'
 })
 
-const setStartDate = (startDate) => ({
+export const setStartDate = (startDate) => ({
     type: 'SET_START_DATE',
     startDate
 })
 
-const setEndDate = (endDate) => ({
+export const setEndDate = (endDate) => ({
     type: 'SET_END_DATE',
     endDate
 })
-
-module.exports = {
-    setEndDate,
-    setStartDate,
-    sortByAmount,
-    sortByDate,
-    setTextFilter
-}

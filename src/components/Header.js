@@ -1,7 +1,7 @@
-const React = require('react')
-const { NavLink } = require('react-router-dom')
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-const Header = () => (
+export default () => (
     <header>
         <h1>Budget</h1>
         <NavLink to='/' activeClassName='is-active' exact={true}>Dashboard</NavLink>
@@ -9,5 +9,3 @@ const Header = () => (
         <NavLink to='/help' activeClassName='is-active'>Help Page</NavLink>
     </header>
 )
-
-module.exports = Header

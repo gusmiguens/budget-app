@@ -1,7 +1,5 @@
-const React = require('react')
+import React from 'react'
 
-const HelpExpense = () => (
+export default () => (
     <div>Help Expense</div>
 )
-
-module.exports = HelpExpense

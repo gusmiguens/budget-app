@@ -1,13 +1,13 @@
-const { BrowserRouter, Route, Switch } = require('react-router-dom')
-const React = require('react')
-const Header = require('../components/Header')
-const ExpenseDashboard = require('../components/ExpenseDashboard')
-const AddExpense = require('../components/AddExpense')
-const EditExpense = require('../components/EditExpense')
-const HelpExpense = require('../components/HelpExpense')
-const NotFound = require('../components/NotFound')
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React from 'react'
+import Header from '../components/Header'
+import ExpenseDashboard from '../components/ExpenseDashboard'
+import AddExpense from '../components/AddExpense'
+import EditExpense from '../components/EditExpense'
+import HelpExpense from '../components/HelpExpense'
+import NotFound from '../components/NotFound'
 
-const AppRouter = () => (
+export const AppRouter = () => (
     <BrowserRouter>
         <div>
             <Header />
@@ -22,5 +22,4 @@ const AppRouter = () => (
     </BrowserRouter>
 )
 
-module.exports = AppRouter
-
+export default AppRouter

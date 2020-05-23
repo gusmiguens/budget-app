@@ -1,12 +1,10 @@
-const React = require('react')
-const { ExpenseList } = require('./ExpenseList')
-const { ExpenseListFilters } = require('./ExpenseListFilters')
+import React from 'react'
+import ExpenseList from './ExpenseList'
+import ExpenseListFilters from './ExpenseListFilters'
 
-const ExpenseDashboard = () => (
+export default () => (
     <div>
         <ExpenseListFilters />
         <ExpenseList />
     </div>
 )
-
-module.exports = ExpenseDashboard

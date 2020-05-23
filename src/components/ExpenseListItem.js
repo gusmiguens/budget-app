@@ -1,7 +1,7 @@
-const React = require('react')
-const { Link } = require('react-router-dom')
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const ExpenseListItem = ({ description, amount, createdAt, id }) => (
+export default ({ description, amount, createdAt, id }) => (
     <div>
         <Link to={`/edit/${id}`}>
             <h3>{description}</h3>
@@ -9,5 +9,3 @@ const ExpenseListItem = ({ description, amount, createdAt, id }) => (
         <p>Amount: {amount} - CreatedAt: {createdAt}</p>
     </div>
 )
-
-module.exports = ExpenseListItem

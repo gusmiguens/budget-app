@@ -1,15 +1,15 @@
-const React = require('react')
-const { connect } = require('react-redux')
-const { DateRangePicker } = require('react-dates')
-const {
+import React from 'react'
+import { connect } from 'react-redux'
+import { DateRangePicker } from 'react-dates'
+import {
     setTextFilter,
     sortByDate,
     sortByAmount,
     setEndDate,
     setStartDate
-} = require('../actions/filters')
+} from '../actions/filters'
 
-class ExpenseListFilters extends React.Component {
+export class ExpenseListFilters extends React.Component {
     state = {
         calendarFocused: null,
     }
@@ -74,9 +74,4 @@ const mapDispatchToProps = (dispatch) => ({
     setEndDate: (endDate) => dispatch(setEndDate(endDate))
 })
 
-const ConnectedExpenseListFilter = connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters)
-
-module.exports = {
-    ExpenseListFilters,
-    ConnectedExpenseListFilter
-}
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters)
