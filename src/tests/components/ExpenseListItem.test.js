@@ -1,7 +1,7 @@
-const React = require('react')
-const { shallow } = require('enzyme')
-const ExpenseListItem = require('../../components/ExpenseListItem')
-const expenses = require('../fixtures/expenses')
+import React from 'react'
+import { shallow } from 'enzyme'
+import ExpenseListItem from '../../components/ExpenseListItem'
+import expenses from '../fixtures/expenses'
 
 describe('<ExpenseListItem />', () => {
     it('Should render ExpenseListItem correctly', () => {

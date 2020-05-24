@@ -1,9 +1,9 @@
-const React = require('react')
-const { shallow } = require('enzyme')
-const { DateRangePicker } = require('react-dates')
-const moment = require('moment')
-const { ExpenseListFilters } = require('../../components/ExpenseListFilters')
-const { filters, altFilters } = require('../fixtures/filters')
+import React from 'react'
+import { shallow } from 'enzyme'
+import { DateRangePicker } from 'react-dates'
+import moment from 'moment'
+import { ExpenseListFilters } from '../../components/ExpenseListFilters'
+import { filters, altFilters } from '../fixtures/filters'
 
 let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper
 beforeEach(() => {

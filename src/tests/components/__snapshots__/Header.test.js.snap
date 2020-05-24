@@ -18,11 +18,5 @@ exports[`<Header /> Should render Header correctly 1`] = `
   >
     Create Page
   </NavLink>
-  <NavLink
-    activeClassName="is-active"
-    to="/help"
-  >
-    Help Page
-  </NavLink>
 </header>
 `;

@@ -1,6 +1,6 @@
-const selectExpenses = require('../../selectors/expenses')
-const moment = require('moment')
-const expenses = require('../fixtures/expenses')
+import selectExpenses from '../../selectors/expenses'
+import moment from 'moment'
+import expenses from '../fixtures/expenses'
 
 describe('Filter tests', () => {
     it('Should filter by text value', () => {

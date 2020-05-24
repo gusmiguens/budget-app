@@ -2,7 +2,7 @@
 
 exports[`<ExpenseDashboard /> Should render ExpenseDashboard correctly 1`] = `
 <div>
-  <ExpenseListFilters />
-  <ExpenseList />
+  <Connect(ExpenseListFilters) />
+  <Connect(ExpenseList) />
 </div>
 `;

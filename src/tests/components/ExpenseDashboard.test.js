@@ -1,6 +1,6 @@
-const React = require('react')
-const { shallow } = require('enzyme')
-const ExpenseDashboard = require('../../components/ExpenseDashboard')
+import React from 'react'
+import { shallow } from 'enzyme'
+import ExpenseDashboard from '../../components/ExpenseDashboard'
 
 describe('<ExpenseDashboard />', () => {
     it('Should render ExpenseDashboard correctly', () => {

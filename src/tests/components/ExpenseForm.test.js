@@ -1,9 +1,9 @@
-const React = require('react')
-const { shallow } = require('enzyme')
-const { SingleDatePicker } = require('react-dates')
-const ExpenseForm = require('../../components/ExpenseForm')
-const expenses = require('../fixtures/expenses')
-const moment = require('moment')
+import React from 'react'
+import { shallow } from 'enzyme'
+import { SingleDatePicker } from 'react-dates'
+import ExpenseForm from '../../components/ExpenseForm'
+import expenses from '../fixtures/expenses'
+import moment from 'moment'
 
 describe('<ExpenseFrom />', () => {
     describe('Expense form render tests', () => {

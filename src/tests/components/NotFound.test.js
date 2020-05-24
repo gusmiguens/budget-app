@@ -1,6 +1,6 @@
-const React = require('react')
-const { shallow } = require('enzyme')
-const NotFound = require('../../components/NotFound')
+import React from 'react'
+import { shallow } from 'enzyme'
+import NotFound from '../../components/NotFound'
 
 describe('<NotFound />', () => {
     it('Should render NotFound correctly', () => {

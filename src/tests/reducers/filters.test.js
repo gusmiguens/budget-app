@@ -1,5 +1,5 @@
-const filtersReducer = require('../../reducers/filters')
-const moment = require('moment')
+import filtersReducer from '../../reducers/filters'
+import moment from 'moment'
 
 describe('Filters reducer tests', () => {
     it('Should setup default filter values', () => {

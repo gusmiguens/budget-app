@@ -1,5 +1,5 @@
-const expensesReducer = require('../../reducers/expenses')
-const expenses = require('../fixtures/expenses')
+import expensesReducer from '../../reducers/expenses'
+import expenses from '../fixtures/expenses'
 
 describe('Expenses reducer tests', () => {
     it('Should set default state', () => {

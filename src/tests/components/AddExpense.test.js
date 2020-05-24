@@ -1,7 +1,7 @@
-const React = require('react')
-const { shallow } = require('enzyme')
-const { AddExpense } = require('../../components/AddExpense')
-const expenses = require('../fixtures/expenses')
+import React from 'react'
+import { shallow } from 'enzyme'
+import { AddExpense } from '../../components/AddExpense'
+import expenses from '../fixtures/expenses'
 
 let addExpense, history, wrapper
 beforeEach(() => {
