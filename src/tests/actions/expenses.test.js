@@ -1,4 +1,13 @@
-const { startAddExpense, addExpense, editExpense, removeExpense, setExpenses, startSetExpenses } = require('../../actions/expenses')
+const {
+    startAddExpense,
+    addExpense,
+    editExpense,
+    removeExpense,
+    setExpenses,
+    startSetExpenses,
+    startRemoveExpense,
+    startEditExpense
+} = require('../../actions/expenses')
 import expenses from '../fixtures/expenses'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
@@ -22,6 +31,23 @@ describe('Edit expense tests', () => {
             id: '123abc'
         })
     })
+    it('should remove expense from firebase', (done) => {
+        const store = createMockStore({})
+        const id = expenses[0].id
+        store.dispatch(startRemoveExpense({ id }))
+            .then(() => {
+                const actions = store.getActions()
+                expect(actions[0]).toEqual({
+                    type: 'REMOVE_EXPENSE',
+                    id
+                })
+                return database.ref(`expenses/${id}`).once('value')
+            }).then((snapshot) => {
+                const val = snapshot.val()
+                expect(val).toBeFalsy()
+                done()
+            })
+    });
 })
 
 describe('Edit expense tests', () => {
@@ -33,6 +59,26 @@ describe('Edit expense tests', () => {
             updates: { note: 'New description' }
         })
     })
+    it('Should edit expense from firebase', (done) => {
+        const store = createMockStore({})
+        const id = expenses[0].id
+        const updates = {
+            description: 'updated description'
+        }
+        store.dispatch(startEditExpense(id, updates))
+            .then(() => {
+                const actions = store.getActions()
+                expect(actions[0]).toEqual({
+                    type: 'EDIT_EXPENSE',
+                    id,
+                    updates
+                })
+                return database.ref(`expenses/${id}`).once('value')
+            }).then((snapshot) => {
+                expect(snapshot.val().description).toBe(updates.description)
+                done()
+            })
+    });
 })
 describe('Add expense tests', () => {
     it('should setup add expense action object with provided values', () => {

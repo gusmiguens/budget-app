@@ -18,6 +18,8 @@ const jsx = (
     </Provider>
 )
 
+
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
 
 store.dispatch(startSetExpenses()).then(() => {
