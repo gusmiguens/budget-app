@@ -13,6 +13,8 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import database from '../../firebase/firebase'
 
+const uid = 'myId'
+const defaultAuthState = { auth: { uid }}
 const createMockStore = configureMockStore([thunk])
 
 beforeEach((done) => {
@@ -20,7 +22,7 @@ beforeEach((done) => {
     expenses.forEach(({ id, description, note, amount, createdAt }) => {
         expensesData[id] = { description, note, amount, createdAt }
     })
-    database.ref('expenses').set(expensesData).then(() => done())
+    database.ref(`users/${uid}/expenses`).set(expensesData).then(() => done())
 })
 
 describe('Edit expense tests', () => {
@@ -32,7 +34,7 @@ describe('Edit expense tests', () => {
         })
     })
     it('should remove expense from firebase', (done) => {
-        const store = createMockStore({})
+        const store = createMockStore(defaultAuthState)
         const id = expenses[0].id
         store.dispatch(startRemoveExpense({ id }))
             .then(() => {
@@ -41,7 +43,7 @@ describe('Edit expense tests', () => {
                     type: 'REMOVE_EXPENSE',
                     id
                 })
-                return database.ref(`expenses/${id}`).once('value')
+                return database.ref(`users/${uid}/expenses/${id}`).once('value')
             }).then((snapshot) => {
                 const val = snapshot.val()
                 expect(val).toBeFalsy()
@@ -60,7 +62,7 @@ describe('Edit expense tests', () => {
         })
     })
     it('Should edit expense from firebase', (done) => {
-        const store = createMockStore({})
+        const store = createMockStore(defaultAuthState)
         const id = expenses[0].id
         const updates = {
             description: 'updated description'
@@ -73,7 +75,7 @@ describe('Edit expense tests', () => {
                     id,
                     updates
                 })
-                return database.ref(`expenses/${id}`).once('value')
+                return database.ref(`users/${uid}/expenses/${id}`).once('value')
             }).then((snapshot) => {
                 expect(snapshot.val().description).toBe(updates.description)
                 done()
@@ -89,7 +91,7 @@ describe('Add expense tests', () => {
         })
     })
     it('should add expense to database and store', (done) => {
-        const store = createMockStore({})
+        const store = createMockStore(defaultAuthState)
         const expenseData = {
             description: 'Dummy data',
             amount: 200,
@@ -106,7 +108,7 @@ describe('Add expense tests', () => {
                         ...expenseData
                     }
                 })
-                return database.ref(`expenses/${actions[0].expense.id}`).once('value')
+                return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value')
             }).then((snapshot) => {
                 const val = snapshot.val()
                 expect(val).toEqual(expenseData)
@@ -114,7 +116,7 @@ describe('Add expense tests', () => {
             })
     })
     it('should add expense with defaults to database and store', (done) => {
-        const store = createMockStore({})
+        const store = createMockStore(defaultAuthState)
         const expenseData = {
             description: '',
             note: '',
@@ -131,7 +133,7 @@ describe('Add expense tests', () => {
                         ...expenseData
                     }
                 })
-                return database.ref(`expenses/${actions[0].expense.id}`).once('value')
+                return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value')
             }).then((snapshot) => {
                 const val = snapshot.val()
                 expect(val).toEqual(expenseData)
@@ -149,7 +151,7 @@ describe('Set expense tests', () => {
         })
     })
     it('should fetch the expenses from firebase', (done) => {
-        const store = createMockStore({})
+        const store = createMockStore(defaultAuthState)
         store.dispatch(startSetExpenses())
             .then(() => {
                 const actions = store.getActions()
